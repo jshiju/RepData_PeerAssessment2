@@ -23,7 +23,7 @@ options(scipen = 1)
 suppressMessages(suppressWarnings(library(R.utils)))
 suppressMessages(suppressWarnings(library(ggplot2)))
 suppressMessages(suppressWarnings(library(plyr)))
-require(gridExtra)
+suppressMessages(suppressWarnings(require(gridExtra)))
 ```
 
 ### II. DATA PROCESSING
@@ -34,7 +34,6 @@ Download the data from NOAA Storm Database site and unzip it.
 
 ```r
 if (!"stormData.csv.bz2" %in% dir("./data/")) {
-    print("hhhh")
     download.file("http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2", destfile = "data/stormData.csv.bz2")
     bunzip2("data/stormData.csv.bz2", overwrite=T, remove=F)
 }
@@ -345,7 +344,7 @@ grid.arrange(propertyPlot, cropPlot, ncol = 2)
 ```
 
 ![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png) 
-Figure (3) - Property and cropr damaage by weather event types
+Figure (3) - Property and crop damage by weather event types
 
 
 Based on the above histograms, we find that **flood** and **hurricane/typhoon** cause most property damage; **drought** and **flood** causes most crop damage in the United States from 1995 to 2011.
